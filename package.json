@@ -1,6 +1,6 @@
 {
-  "name": "@loweman/base32",
-  "version": "1.0.2",
+  "name": "base32-transposer",
+  "version": "1.0.0",
   "description": "Encode and Decode Base32",
   "main": "./lib/index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Lowe-Man/base32.git"
+    "url": "git+https://github.com/Lowe-Man/base32-transposer.git"
   },
   "keywords": [
     "converter",
@@ -27,7 +27,7 @@
     "manipulation"
   ],
   "bugs": {
-    "url": "https://github.com/Lowe-Man/base32/issues"
+    "url": "https://github.com/Lowe-Man/base32-transposer/issues"
   },
-  "homepage": "https://github.com/Lowe-Man/base32#readme"
+  "homepage": "https://github.com/Lowe-Man/base32-transposer#readme"
 }
