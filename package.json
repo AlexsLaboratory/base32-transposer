@@ -1,5 +1,5 @@
 {
-  "name": "base32",
+  "name": "@loweman/base32",
   "version": "1.0.0",
   "description": "Encode and Decode Base32",
   "main": "./lib/index.js",
