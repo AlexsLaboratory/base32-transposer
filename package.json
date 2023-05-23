@@ -4,11 +4,17 @@
   "description": "Encode and Decode Base32",
   "main": "./lib/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "test": "jest"
   },
   "author": "Alex Lowe",
   "license": "MIT",
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
+    "@types/node": "^20.2.1",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
   },
   "types": "./lib/index.d.ts",
