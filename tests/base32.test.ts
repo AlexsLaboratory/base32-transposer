@@ -1,7 +1,6 @@
 import { test, expect, describe } from '@jest/globals';
 import Base32 from '../lib/index';
 
-
 describe('base32 module', () => {
     test('convert string to array of ascii characters', () => {
         const input = 'hello world';

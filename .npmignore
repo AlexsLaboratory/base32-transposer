@@ -1,2 +1,6 @@
 .gitignore
 /src
+/tests
+package.json
+package-lock.json
+tsconfig.json
