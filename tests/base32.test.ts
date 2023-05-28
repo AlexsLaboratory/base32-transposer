@@ -1,16 +1,16 @@
 import { test, expect, describe } from '@jest/globals';
-import Base32 from '../lib/index';
+import { stringToASCIIArray, asciiArrayToBase2, zeroPad, chunkBinary, binaryArrayToBase32, base32ToBinary, fiveToEightBit, binaryToASCII, asciiToString, bufferToBinaryArray, encode, decode } from '../lib/index';
 
 describe('base32 module', () => {
     test('convert string to array of ascii characters', () => {
         const input = 'hello world';
-        const output = Base32.stringToASCIIArray(input);
+        const output = stringToASCIIArray(input);
         expect(output).toEqual([104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]);
     });
 
     test('convert array of ascii characters to binary', () => {
         const input = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100];
-        const output = Base32.asciiArrayToBase2(input);
+        const output = asciiArrayToBase2(input);
         expect(output).toEqual([
             '01101000',
             '01100101',
@@ -27,9 +27,9 @@ describe('base32 module', () => {
     });
 
     test('pad binary with x', () => {
-        const acii = Base32.stringToASCIIArray('Cat');
-        const binary = Base32.asciiArrayToBase2(acii);
-        const output = Base32.zeroPad(binary);
+        const acii = stringToASCIIArray('Cat');
+        const binary = asciiArrayToBase2(acii);
+        const output = zeroPad(binary);
         expect(output).toEqual([
             '01000011',
             '01100001',
@@ -40,10 +40,10 @@ describe('base32 module', () => {
     });
 
     test('chunk binary into 5 bit chunks', () => {
-        const acii = Base32.stringToASCIIArray('Cat');
-        const binary = Base32.asciiArrayToBase2(acii);
-        const padded = Base32.zeroPad(binary);
-        const output = Base32.chunkBinary(padded.join(''));
+        const acii = stringToASCIIArray('Cat');
+        const binary = asciiArrayToBase2(acii);
+        const padded = zeroPad(binary);
+        const output = chunkBinary(padded.join(''));
         expect(output).toEqual([
             '01000',
             '01101',
@@ -67,13 +67,13 @@ describe('base32 module', () => {
             'xxxxx',
             'xxxxx'
         ];
-        const output = Base32.binaryArrayToBase32(inputArray);
+        const output = binaryArrayToBase32(inputArray);
         expect(output).toEqual('INQXI===');
     });
 
     test('base32 encoded string to binary array', () => {
         const input = 'INQXI===';
-        const output = Base32.base32ToBinary(input);
+        const output = base32ToBinary(input);
         expect(output).toEqual([
             '01000',
             '01101',
@@ -91,7 +91,7 @@ describe('base32 module', () => {
             '10111',
             '01000'
         ];
-        const output = Base32.fiveToEightBit(input);
+        const output = fiveToEightBit(input);
         expect(output).toEqual([
             '01000011',
             '01100001',
@@ -105,7 +105,7 @@ describe('base32 module', () => {
             '01100001',
             '01110100'
         ];
-        const output = Base32.binaryToASCII(input);
+        const output = binaryToASCII(input);
         expect(output).toEqual([
             67,
             97,
@@ -119,13 +119,13 @@ describe('base32 module', () => {
             97,
             116
         ];
-        const output = Base32.asciiToString(input);
+        const output = asciiToString(input);
         expect(output).toEqual('Cat');
     });
 
     test('buffer to binary array wiht padding', () => {
         const input = Buffer.from('Cat');
-        const output = Base32.bufferToBinaryArray(input);
+        const output = bufferToBinaryArray(input);
         expect(output).toEqual([
             '01000011',
             '01100001',
@@ -135,19 +135,19 @@ describe('base32 module', () => {
 
     test('encode string to base32', () => {
         const input = 'Cat';
-        const output = Base32.encode(input);
+        const output = encode(input);
         expect(output).toEqual('INQXI===');
     });
 
     test('encode buffer to base32', () => {
         const input = Buffer.from('Cat');
-        const output = Base32.encode(input);
+        const output = encode(input);
         expect(output).toEqual('INQXI===');
     });
 
     test('decode base32 to string', () => {
         const input = 'INQXI===';
-        const output = Base32.decode(input);
+        const output = decode(input);
         expect(output).toEqual('Cat');
     });
 });
